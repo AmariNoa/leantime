@@ -1,5 +1,5 @@
 @php
-    $currentMilestone = $currentMilestone ?? null;
+    $currentMilestone = $currentMilestone ?? ($milestone ?? (object)['id'=>'','headline'=>'','projectId'=>'','status'=>'','milestoneid'=>'','editorId'=>'','tags'=>'','editFrom'=>'','editTo'=>'']);
     $milestones = $milestones ?? [];
     $statusLabels = $statusLabels ?? [];
 @endphp

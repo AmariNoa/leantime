@@ -1,5 +1,6 @@
 @php
-    $comments = app()->make(Leantime\Domain\Comments\Repositories\Comments::class);
+    $commentRepo = app()->make(Leantime\Domain\Comments\Repositories\Comments::class);
+    $comments = $comments ?? [];
     $formUrl = CURRENT_URL;
     $formHash = md5($formUrl);
 
@@ -98,8 +99,8 @@
                         </div>
 
                         <div class="replies">
-                            @if ($comments->getReplies($row['id']))
-                                @foreach ($comments->getReplies($row['id']) as $comment)
+                            @if ($commentRepo->getReplies($row['id']))
+                                @foreach ($commentRepo->getReplies($row['id']) as $comment)
                                     <div>
                                         <div class="commentImage">
                                             <img src="{{ BASE_URL }}/api/users?profileImage={{ $comment['userId'] }}&v={{ format($comment['userModified'])->timestamp() }}"/>

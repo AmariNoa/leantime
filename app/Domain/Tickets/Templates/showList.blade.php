@@ -10,8 +10,8 @@
     $efforts = $efforts;
     $priorities = $priorities;
     $statusLabels = $allTicketStates;
-    $groupBy = $groupBy;
-    $newField = $newField;
+    $groupBy = $groupBy ?? ($searchCriteria['groupBy'] ?? '');
+    $newField = $newField ?? null;
     $numberofColumns = count($allTicketStates) - 1;
     $size = floor(100 / $numberofColumns);
 @endphp
