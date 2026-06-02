@@ -17,5 +17,6 @@ temporary downstream fix until an official release (3.8.1+) addresses them.
 | `app/Domain/Tickets/Templates/milestoneDialog.blade.php` | Template read `$currentMilestone` but the controller assigns `$milestone`; the mismatch left the variable null (crash on new, empty form on edit). Fall back to the controller-provided `$milestone`. |
 | `app/Domain/Comments/Templates/submodules/generalComment.blade.php` | Line 2 overwrote the controller-provided `$comments` array with a repository instance, so `@foreach ($comments ...)` rendered nothing. Use a separate `$commentRepo` for `getReplies()` and keep `$comments` as the array. |
 | `app/Language/ja-JP.ini` | `links.list` / `links.list_view` icons lacked the Font Awesome style prefix (`<i class='fa-list'>`), rendering as broken glyphs in the Japanese locale. Added the `fa` prefix. |
+| `app/Views/Templates/sections/footer.blade.php` | Added a footer notice stating this is a patched build, linking to this repository's source — to satisfy AGPL §13 (offer of Corresponding Source to users interacting over a network). |
 
 See the commit diff for the exact changes.
