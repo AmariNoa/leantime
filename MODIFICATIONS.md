@@ -12,8 +12,8 @@ Base: upstream tag `v3.9.5` (`c733d5208`).
 |---|---|
 | `app/Language/ja-JP.ini` | Add the missing FontAwesome style prefix on the list-view toggle icons (`links.list` / `links.list_view`: `fa-list` → `fa fa-list`). Still absent upstream in the Japanese locale (en-US is already correct). |
 | `app/Views/Templates/sections/footer.blade.php` | Add a footer notice stating this is a patched build and linking back to this modified source (AGPL §13). |
-| `public/theme/default/css/custom.css` | Theme customization (force-added; upstream `.gitignore` excludes `custom.css`): below 1200px fall the sidebar back to the mobile overlay drawer, keep the header on one row, fix header dropdown clipping; below 576px align the work-mode icon hit areas. |
-| `public/theme/default/js/custom.js` | Theme customization: raise the auto-close-menu threshold from 576px to 1200px. |
+| `public/theme/default/css/custom.css` | Theme customization (force-added; upstream `.gitignore` excludes `custom.css`). Minimal for 3.9.5: in the 576–1199px drawer range, hide the logo and offset the header (native only does this below 576px, so the logo otherwise crowds the hamburger and mispositions the work-mode icons). Everything else 3.8.0 needed here (overlay drawer, dropdown overflow, icon-only header, work-mode spacing) is handled natively by 3.9.5's responsive sweep (#3442). |
+| `public/theme/default/js/custom.js` | Intentionally empty on 3.9.5 (the 3.8.0 menu auto-close threshold override is no longer needed; native responsive handles the drawer). |
 
 ## Not included (fixed upstream in 3.9.x)
 

@@ -1,34 +1,16 @@
-@media (min-width: 576px) and (max-width: 1200px) {
-    .mainwrapper.menuclosed .leftpanel { display: none !important; }
-    .mainwrapper .leftpanel,
-    .mainwrapper.menuopen .leftpanel {
-        position: absolute; z-index: 999; top: 50px; left: 5px;
-        width: 90%; max-width: 360px; margin-left: 0;
-        background: #555;
-        box-shadow: var(--regular-shadow, 0 2px 8px rgba(0,0,0,.3));
-    }
-    .rightpanel, .mainwrapper.menuopen .rightpanel { width: 100% !important; margin-left: 0 !important; }
-    .mainwrapper .primaryContent { padding-left: 0 !important; }
-    .header .barmenu { display: inline-block !important; }
-    /* header fit: hide logo + icon-only work-modes so the nav stays on one row */
+/* ------------------------------------------------------------------
+ * Leantime 3.9.5 — minimal theme customization
+ * ------------------------------------------------------------------
+ * 3.9.5's responsive sweep (#3442) handles narrow widths natively
+ * (off-canvas drawer, icon-only header, dropdown overflow, opaque
+ * drawer bg, work-mode spacing). The ONLY gap: in the 576–1199px
+ * "drawer" range it does NOT hide the logo or offset the headerinner
+ * (it only does so <576px), so the logo crowds the hamburger and the
+ * work-mode icons are pushed out of place. Replicate the <576 behaviour
+ * across the drawer range. Bounded at 1199px to match native's drawer
+ * breakpoint so 1200px+ is cleanly desktop.
+ * ------------------------------------------------------------------ */
+@media (min-width: 576px) and (max-width: 1199px) {
     .header .logo { display: none !important; }
-    .headmenu.work-modes .headmenu-label { display: none !important; }
-}
-
-/* --- 狭幅(<1200px)共通: ヘッダーのドロップダウンがクリップされる問題を解消 ---
- * 標準では @media(max-width:575px) で .headmenu{overflow-x:auto} となり、
- * overflow-y も auto に計算されて Projects一覧/ユーザーメニューのドロップダウンが
- * 切り取られて開かない。visible に戻して逃がす。あわせて孤立する▼を隠す。 */
-@media (max-width: 1200px) {
-    .headmenu { overflow: visible !important; }
-    .headmenu.work-modes .fa-caret-down { display: none !important; }
-}
-
-/* --- 極狭幅(<576px): work-modes アイコンの当たり判定/表示の重なりを解消 ---
- * 標準モバイル(max-width:575px)では li が width:36px に固定される一方、
- * 内側の <a> は min-width:40px のため <a> が li を 4px はみ出し、隣の
- * Projects と My Work のアンカー(クリック領域・activeハイライト)が重なる。
- * li を 40px に揃えて <a>(40px) と一致させ、重なりを解消する。 */
-@media (max-width: 575px) {
-    .headmenu.work-modes > li { width: 40px !important; min-width: 40px !important; }
+    .headerinner { margin-left: 45px !important; }
 }
